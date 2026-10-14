@@ -4,7 +4,7 @@
  * NIM : 1201230038
  */
 
-package com.mycompany.modul2test;
+package com.mycompany.modul2;
 
 /**
  * Class utama Modul 2 - versi ringkas, hanya pokok yang paling
