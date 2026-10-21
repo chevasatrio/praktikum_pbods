@@ -19,7 +19,7 @@ class Lagu {
     }
 }
 
-class DemoOver2 {
+public class DemoOver2 {
     public static void main(String[] args) {
         Lagu d, e;
         d = new Lagu();

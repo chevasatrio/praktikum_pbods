@@ -33,7 +33,9 @@ class Manager extends Employee {
         System.out.println("alamat : " + alamat);
         System.out.println("departemen : " + super.departemen);
     }
+}
 
+public class DemoSuper {
     public static void main(String[] args) {
         /* membuat objek */
         Manager adi = new Manager("adi", "sukabirus");
