@@ -1,21 +1,26 @@
 package com.mycompany.modul6;
 
 class A {
+
     int x;
     int y;
+
     void tampilXY() {
         System.out.println("nilai x: " + x + " nilai y: " + y);
     }
 }
 
 class B extends A {
+
     int z;
+
     void jumlahXY() {
         System.out.println("jumlah: " + (x + y + z));
     }
 }
 
 public class DemoInheritance {
+
     public static void main(String[] args) {
         A superclass = new A();
         B subclass = new B();
