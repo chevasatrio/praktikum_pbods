@@ -11,6 +11,6 @@ public class MainAbstract {
         Employee e = pegawai;
         System.out.printf("Lewat variabel Employee : $%,.2f%n", e.earnings());
 
-        // Employee x = new Employee("A", "B", "C"); // ERROR: Employee is abstract
+//        Employee x = new Employee("A", "B", "C"); // ERROR: Employee is abstract
     }
 }
