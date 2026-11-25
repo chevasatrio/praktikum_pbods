@@ -1,0 +1,36 @@
+/* Selektor elemen: semua <body> */
+body {
+    font-family: Arial, sans-serif;
+    margin: 24px;
+    background-color: #f5f7fa;
+}
+
+/* Selektor class: diawali titik (.) */
+.judul-besar {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.tengah {
+    text-align: center;
+}
+
+.daftar {
+    list-style-type: square;
+    color: #1f6feb;
+}
+
+.kotak {
+    background-color: #ffffff;
+    border: 2px solid #1f6feb;
+    padding: 12px;
+}
+
+.sorot {
+    background-color: yellow;
+}
+
+/* Selektor id: diawali pagar (#) */
+#catatan {
+    font-style: italic;
+}

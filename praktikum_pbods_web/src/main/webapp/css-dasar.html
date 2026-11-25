@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11.2 CSS</title>
+
+    <!-- Cara 1: EXTERNAL CSS (paling disarankan, bisa dipakai banyak halaman) -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Cara 2: INTERNAL CSS (hanya berlaku di halaman ini) -->
+    <style>
+        h2 {
+            color: teal;
+        }
+    </style>
+</head>
+<body>
+    <h1>Belajar CSS</h1>
+    <a href="index.html">Kembali ke menu</a>
+
+    <!-- Cara 3: INLINE CSS (langsung di elemen, pakai seperlunya saja) -->
+    <p style="color: red;">Paragraf ini diberi warna dengan inline CSS.</p>
+
+    <h2>Font &amp; Alignment</h2>
+    <p class="judul-besar">Teks dengan font-size dan font-weight</p>
+    <p class="tengah">Teks rata tengah</p>
+
+    <h2>List</h2>
+    <ul class="daftar">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ul>
+
+    <h2>Span &amp; Div</h2>
+    <!-- div = blok (satu baris penuh), span = inline (di dalam teks) -->
+    <div class="kotak">
+        Ini div. Kata <span class="sorot">ini</span> dibungkus span.
+    </div>
+
+    <!-- id = unik (1 elemen), class = bisa dipakai banyak elemen -->
+    <p id="catatan">Paragraf dengan id "catatan".</p>
+</body>
+</html>

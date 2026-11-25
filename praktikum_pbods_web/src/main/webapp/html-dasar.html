@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11.1 HTML</title>
+</head>
+<body>
+    <!-- 11.1.3 Heading: h1 paling penting, h6 paling kecil -->
+    <h1>Belajar HTML</h1>
+    <h2>Heading 2</h2>
+    <p>Ini paragraf.<br>Tag &lt;br&gt; untuk pindah baris (tag tanpa pasangan).</p>
+
+    <!-- 11.1.4 Hyperlink: atribut href = tujuan link -->
+    <a href="index.html">Kembali ke menu</a> |
+    <a href="https://www.google.co.id" target="_blank">Buka Google di tab baru</a>
+
+    <!-- 11.1.5 Tabel: tr = baris, th = judul kolom, td = isi -->
+    <h2>Tabel Mahasiswa</h2>
+    <table border="1">
+        <tr>
+            <th>NIM</th>
+            <th>Nama</th>
+        </tr>
+        <tr>
+            <td>1201230001</td>
+            <td>Andi</td>
+        </tr>
+        <tr>
+            <td>1201230002</td>
+            <td>Sari</td>
+        </tr>
+    </table>
+
+    <!-- 11.1.6 Image: alt wajib diisi (muncul jika gambar gagal dimuat) -->
+    <h2>Gambar</h2>
+    <img src="img/logo.svg" alt="Logo Java" width="120">
+
+    <!-- 11.1.8 Form: label + input, atribut name = nama data yang dikirim -->
+    <h2>Form Pendaftaran</h2>
+    <form action="#" method="get">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required>
+        <br><br>
+
+        <label>Jenis Kelamin:</label>
+        <input type="radio" id="l" name="jk" value="L"> <label for="l">Laki-laki</label>
+        <input type="radio" id="p" name="jk" value="P"> <label for="p">Perempuan</label>
+        <br><br>
+
+        <label for="prodi">Prodi:</label>
+        <select id="prodi" name="prodi">
+            <option value="DS">Data Science</option>
+            <option value="IF">Informatika</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Kirim</button>
+    </form>
+</body>
+</html>
