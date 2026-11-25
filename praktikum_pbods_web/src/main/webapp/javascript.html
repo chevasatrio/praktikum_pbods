@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11.4 JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <!-- defer = script dijalankan setelah HTML selesai dimuat -->
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <div class="container py-4">
+        <h1>Belajar JavaScript</h1>
+        <p>Buka <strong>Console</strong> browser (F12) untuk melihat hasil <code>console.log</code>.</p>
+        <a href="index.html" class="btn btn-outline-secondary btn-sm mb-4">Kembali ke menu</a>
+
+        <!-- Gabungan HTML + Bootstrap + JS: input data -> objek Mahasiswa -> tabel -->
+        <form id="formMhs" class="row g-2 mb-3">
+            <div class="col-md-4">
+                <input type="text" id="nim" class="form-control" placeholder="NIM" required>
+            </div>
+            <div class="col-md-5">
+                <input type="text" id="nama" class="form-control" placeholder="Nama" required>
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary w-100">Tambah</button>
+            </div>
+        </form>
+
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr><th>NIM</th><th>Nama</th><th>Info</th></tr>
+            </thead>
+            <tbody id="tabelMhs"></tbody>
+        </table>
+        <p>Jumlah mahasiswa: <span id="jumlah">0</span></p>
+    </div>
+</body>
+</html>

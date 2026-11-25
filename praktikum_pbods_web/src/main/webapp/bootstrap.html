@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <!-- viewport wajib agar tampilan Bootstrap responsif di HP -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11.3 Bootstrap</title>
+
+    <!-- 11.3.1 Pemasangan Bootstrap lewat CDN (butuh internet) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+    <!-- 11.3.2 Container: pembungkus utama layout -->
+    <div class="container py-4">
+
+        <!-- 11.3.4 Text style -->
+        <h1 class="text-primary">Belajar Bootstrap</h1>
+        <p class="lead">Styling cukup pakai <mark>class</mark>, tanpa menulis CSS sendiri.</p>
+        <a href="index.html" class="btn btn-outline-secondary btn-sm mb-4">Kembali ke menu</a>
+
+        <!-- 11.3.3 Grid: 1 row = 12 kolom. col-md-4 = 4/12 di layar sedang ke atas -->
+        <div class="row mb-4">
+            <div class="col-md-4"><div class="p-3 bg-light border">Kolom 1</div></div>
+            <div class="col-md-4"><div class="p-3 bg-light border">Kolom 2</div></div>
+            <div class="col-md-4"><div class="p-3 bg-light border">Kolom 3</div></div>
+        </div>
+
+        <!-- 11.3.5 Table, Image, & Button -->
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <table class="table table-striped table-bordered">
+                    <thead class="table-dark">
+                        <tr><th>NIM</th><th>Nama</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1201230001</td><td>Andi</td></tr>
+                        <tr><td>1201230002</td><td>Sari</td></tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-primary">Primary</button>
+                <button class="btn btn-success">Success</button>
+                <button class="btn btn-danger">Danger</button>
+            </div>
+            <div class="col-md-4">
+                <img src="img/logo.svg" alt="Logo Java" class="img-fluid rounded-circle">
+            </div>
+        </div>
+
+        <!-- 11.3.6 Form -->
+        <form class="card card-body">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" class="form-control" placeholder="nama@student.telkomuniversity.ac.id">
+            </div>
+            <div class="mb-3">
+                <label for="prodi" class="form-label">Prodi</label>
+                <select id="prodi" class="form-select">
+                    <option>Data Science</option>
+                    <option>Informatika</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Kirim</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
