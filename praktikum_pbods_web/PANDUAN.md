@@ -1,7 +1,7 @@
 # Modul 11 – Web Frontend (HTML, CSS, Bootstrap, JavaScript)
 
 Panduan setup NetBeans 29 dari nol + cara menjalankan project web.
-Server: **Apache Tomcat 8.5 bawaan XAMPP** (`C:\xampp\tomcat`).
+Server: **Apache Tomcat 8.5 bawaan XAMPP** (`C:\xampp\tomcat`), atau **Tomcat 9** untuk pengguna Laragon / tanpa XAMPP.
 
 ---
 
@@ -11,10 +11,22 @@ Server: **Apache Tomcat 8.5 bawaan XAMPP** (`C:\xampp\tomcat`).
 |---|---|
 | JDK (17 ke atas) | CMD → `java -version` |
 | NetBeans 29 | Sudah terpasang |
-| XAMPP (ada folder `C:\xampp\tomcat`) | Buka File Explorer → `C:\xampp\tomcat` |
+| Tomcat | XAMPP: cek folder `C:\xampp\tomcat`. Laragon / tanpa XAMPP: lihat langkah 0a |
 | Internet | Untuk Bootstrap via CDN |
 
 > Penting: **jangan klik Start Tomcat di XAMPP Control Panel.** NetBeans yang akan menyalakan Tomcat. Kalau dua-duanya jalan, port 8080 bentrok.
+
+---
+
+## 0a. Pengguna Laragon / tidak punya XAMPP: download Tomcat 9
+
+Laragon tidak membawa Tomcat. Begitu juga XAMPP yang diinstal tanpa komponen Tomcat.
+
+1. Buka `tomcat.apache.org` → **Download** → **Tomcat 9**.
+2. Bagian **Binary Distributions → Core** → pilih **64-bit Windows zip** (macOS: **tar.gz**).
+3. Extract ke `C:\tomcat9`. Folder yang benar adalah folder yang berisi `bin`, `conf`, dan `lib`. Hindari path yang mengandung spasi.
+
+> **Jangan pakai Tomcat 10/11.** Versi itu memakai `jakarta.*`, sedangkan project kita Java EE 7 (`javax.*`), sehingga Modul 12–15 (JSP/Servlet) akan error.
 
 ---
 
@@ -22,7 +34,7 @@ Server: **Apache Tomcat 8.5 bawaan XAMPP** (`C:\xampp\tomcat`).
 
 1. Menu **Tools → Servers → Add Server...**
 2. Pilih **Apache Tomcat or TomEE** → Next.
-3. **Server Location**: `C:\xampp\tomcat` (klik Browse).
+3. **Server Location**: `C:\xampp\tomcat` atau `C:\tomcat9` (klik Browse).
 4. Isi **Username** dan **Password** bebas (mis. `praktikan` / `praktikan`), lalu centang **Create user if it does not exist**.
 5. Finish. Server akan muncul di tab **Services → Servers**.
 
@@ -38,8 +50,35 @@ Server: **Apache Tomcat 8.5 bawaan XAMPP** (`C:\xampp\tomcat`).
 4. Settings:
    - Server: **Apache Tomcat or TomEE**
    - Java EE Version: **Java EE 7 Web**
-     (jangan pilih Jakarta EE 9/10/11, karena Tomcat 8.5 belum mendukungnya)
+     (jangan pilih Jakarta EE 9/10/11, karena Tomcat 8.5/9 belum mendukungnya)
 5. Finish.
+6. **Perbaiki `pom.xml` (wajib!)**: di tab Projects buka **Project Files → pom.xml**. Hapus semua bagian dari `<build>` sampai `</build>`, ganti dengan kode di bawah, lalu **Ctrl+S**.
+
+```xml
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.13.0</version>
+            <configuration>
+                <release>17</release>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>3.4.0</version>
+            <configuration>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+```
+
+> **Kenapa?** Template bawaan NetBeans untuk Java EE 7 memakai `maven-war-plugin 2.3` dan Java 1.7. Plugin itu tidak jalan di JDK 17 ke atas, sehingga Run akan `BUILD FAILURE` dengan error `InaccessibleObjectException ... does not "opens java.util"`. Pengaturan Java 1.7 juga akan membuat Modul 12 (Servlet) gagal compile di JDK baru.
+> Properti `endorsed.dir` di bagian `<properties>` boleh dibiarkan atau dihapus; tidak dipakai lagi.
 
 Struktur penting di tab **Projects**:
 
@@ -102,6 +141,7 @@ Mematikan Tomcat: tab **Services → Servers → Apache Tomcat or TomEE** → kl
 
 | Gejala | Solusi |
 |---|---|
+| `BUILD FAILURE` dengan `maven-war-plugin:2.3` / `InaccessibleObjectException` | `pom.xml` belum diperbaiki. Ikuti langkah 2 nomor 6, lalu Run lagi. |
 | `port 8080 is already in use` | Stop Tomcat di XAMPP Control Panel. Cek di CMD: `netstat -ano \| findstr :8080`. |
 | Minta username/password terus / deploy gagal | Tools → Servers → Tomcat → tab Connection → isi ulang username/password, centang *Create user*. |
 | Tampilan Bootstrap polos (tidak ada styling) | Tidak ada internet; Bootstrap dipanggil lewat CDN. |
